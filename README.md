@@ -24,6 +24,10 @@ An interactive, responsive, and modern Human Resources Dashboard designed to str
 ## 📦 Installation & Setup
 
 Follow these steps to set up and run the project locally:
+
+---
+
+
 👤 Author
 Ibrahim Ahmed Meqbel
 
