@@ -79,6 +79,20 @@
   background: #0F172A;
 }
 
+.dark .action-btn {
+  background: #0F172A;
+  border-color: #334155;
+  color: #94A3B8;
+}
+
+.dark .action-btn:hover {
+  color: #F1F5F9;
+}
+
+.dark .action-btn.danger:hover {
+  color: #FCA5A5;
+}
+
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--bg);
@@ -412,6 +426,35 @@ body {
 
 .employees-table tbody tr:hover {
   background: var(--bg);
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.action-btn.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
 }
 
 .employee-name-cell {

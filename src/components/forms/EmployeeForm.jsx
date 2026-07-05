@@ -1,12 +1,23 @@
 import { useState } from 'react'
 
-export default function EmployeeForm({ onAdd, onClose }) {
+const defaultEmployee = {
+  name: '',
+  email: '',
+  department: 'Engineering',
+  role: '',
+  status: 'Active',
+}
+
+export default function EmployeeForm({
+  onSubmit,
+  onAdd,
+  onClose,
+  initialData,
+  submitLabel = 'Add Employee',
+}) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    department: 'Engineering',
-    role: '',
-    status: 'Active',
+    ...defaultEmployee,
+    ...initialData,
   })
 
   const handleChange = (e) => {
@@ -16,11 +27,17 @@ export default function EmployeeForm({ onAdd, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newEmployee = {
-      id: Date.now(),
+    const employee = {
       ...formData,
+      id: initialData?.id || Date.now(),
     }
-    onAdd(newEmployee)
+
+    if (onSubmit) {
+      onSubmit(employee)
+    } else {
+      onAdd(employee)
+    }
+
     onClose()
   }
 
@@ -56,7 +73,7 @@ export default function EmployeeForm({ onAdd, onClose }) {
           <option>Inactive</option>
         </select>
       </div>
-      <button type="submit" className="save-btn">Add Employee</button>
+      <button type="submit" className="save-btn">{submitLabel}</button>
     </form>
   )
 }
