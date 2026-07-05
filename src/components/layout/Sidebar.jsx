@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard,
   Users,
@@ -8,6 +8,8 @@ import {
   LogOut,
   Briefcase
 } from 'lucide-react'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase'
 
 const navItems = [
   { path: '/',            icon: LayoutDashboard, label: 'Dashboard' },
@@ -18,8 +20,16 @@ const navItems = [
 ]
 
 export default function Sidebar() {
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await signOut(auth)
+    navigate('/login')
+  }
+
   return (
     <aside className="sidebar">
+
       {/* Logo */}
       <div className="sidebar-logo">
         <Briefcase size={22} color="#818CF8" />
@@ -45,11 +55,12 @@ export default function Sidebar() {
 
       {/* Logout */}
       <div className="sidebar-footer">
-        <button className="sidebar-link logout">
+        <button className="sidebar-link logout" onClick={handleLogout}>
           <LogOut size={18} />
           <span>Logout</span>
         </button>
       </div>
+
     </aside>
   )
 }

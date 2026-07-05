@@ -1,5 +1,7 @@
-import StatsCard from "../ui/StatsCard";    
-import { statsData } from "../data/mockData";
+import StatsCard from '../components/ui/StatsCard'
+import PerformanceChart from '../components/charts/PerformanceChart'
+import AttendanceChart from '../components/charts/AttendanceChart'
+import { statsData, performanceData, attendanceData } from '../data/mockData'
 
 export default function Dashboard() {
   return (
@@ -11,6 +13,10 @@ export default function Dashboard() {
             {...stat}
           />
         ))}
+        </div>
+        <div className="charts-grid">
+          <PerformanceChart data={performanceData} />
+          <AttendanceChart data={attendanceData} />
         </div>
     </div>
   );
